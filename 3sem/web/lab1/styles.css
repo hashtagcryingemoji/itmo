@@ -1,0 +1,45 @@
+table {
+    width: 100%;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+header {
+    width: fit-content;
+    margin: auto;
+}
+
+header > * {
+    color: red;
+    margin: 5%;
+    font-family: serif;
+    font-size: 75%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > * {
+    margin: 1%;
+    justify-self: center;
+    width: fit-content;
+}
+
+label{
+    display: flex;
+}
+
+button {
+    background: white;
+}
+
+button:focus {
+    background: grey;
+}
+
+.blank-class{}
