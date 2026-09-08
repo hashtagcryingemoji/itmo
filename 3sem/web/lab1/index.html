@@ -3,8 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Web laba1</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<table class="custom-class">
+    <tr class="custom-class">
+        <td class="custom-class">
+            <header>
+                <p>Трифан Тимофей Андреевич</p>
+                <p>P3215 12731</p>
+            </header>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <canvas id="main-canvas" width="600" height="400"></canvas>
 
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form id="burmalda">
+                <label>
+                    X
+                    <button type="button" value="-5" class="blank-class">-5</button>
+                    <button type="button" value="-4" class="blank-class">-4</button>
+                    <button type="button" value="-3" class="blank-class">-3</button>
+                    <button type="button" value="-2" class="blank-class">-2</button>
+                    <button type="button" value="-1" class="blank-class">-1</button>
+                    <button type="button" value="0" class="blank-class">0</button>
+                    <button type="button" value="1" class="blank-class">1</button>
+                    <button type="button" value="2" class="blank-class">2</button>
+                    <button type="button" value="3" class="blank-class">3</button>
+                </label>
+
+                <label>
+                    Y
+                    <input id="y" type="number"
+                           name="y"
+                           min="-3"
+                           max="5"
+                           required
+                    >
+                </label>
+
+                <label>
+                    R
+                    <select id="r">
+                        <option>1</option>
+                        <option>1.5</option>
+                        <option>2</option>
+                        <option>2.5</option>
+                        <option>3</option>
+                    </select>
+                </label>
+
+                <button id="submit_button" type="submit">Отправить</button>
+            </form>
+
+        </td>
+    </tr>
+</table>
+<script src="script.js"></script>
 </body>
 </html>
