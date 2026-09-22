@@ -62,6 +62,13 @@ button[type="submit"]:hover {
     margin: 1%;
 }
 
+#clear-button{
+    background-color: #312fae;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 6px 24px;
+}
+
 #form label {
     display: flex;
     align-items: center;
@@ -131,3 +138,20 @@ input[type="text"]:focus {
 .miss {
     color: #cc0000;
 }
+
+#clear-button {
+    margin: 12px 12px;
+}
+
+#comment-td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#comment{
+    width: 80%;
+    border: 1px #312fae solid;
+    border-radius: 6px;
+}
+
