@@ -1,45 +1,133 @@
+body {
+    font-family: sans-serif;
+}
+
 table {
+    border-collapse: collapse;
+}
+
+#main-table {
     width: 100%;
 }
 
-td {
+#main-table > tbody > tr > td {
     text-align: center;
     vertical-align: middle;
+    padding: 8px;
 }
 
-header {
-    width: fit-content;
-    margin: auto;
-}
-
-header > * {
-    color: red;
-    margin: 5%;
-    font-family: serif;
-    font-size: 75%;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form > * {
-    margin: 1%;
-    justify-self: center;
-    width: fit-content;
-}
-
-label{
-    display: flex;
+header > p {
+    font-family: "Times New Roman", Times, serif;
+    color: #8b0000;
+    font-size: 24px;
+    margin: 4px;
 }
 
 button {
-    background: white;
+    background-color: #eeeeee;
+    border: 1px solid #888888;
+    border-radius: 4px;
+    padding: 4px 10px;
 }
 
-button:focus {
-    background: grey;
+.x-button {
+    background-color: #ffffff;
+    width: 34px;
 }
 
-.blank-class{}
+.x-button.selected {
+    background-color: #4a90d9;
+    color: #ffffff;
+    border-color: #2f6cae;
+}
+
+button[type="submit"] {
+    background-color: #2f6cae;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 6px 24px;
+}
+
+button[type="submit"]:hover {
+    background-color: #255a91;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form > * {
+    margin: 1%;
+}
+
+#form label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.x-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+#form input,
+#form select,
+#form button {
+    margin: 0.5%;
+}
+
+input[type="text"] {
+    padding: 4px 6px;
+    border: 1px solid #888888;
+    border-radius: 4px;
+    width: 140px;
+}
+
+input[type="text"]:focus {
+    outline: 2px solid #4a90d9;
+}
+
+#error-message {
+    display: none;
+    color: #cc0000;
+}
+
+#main-canvas {
+    background-color: #ffffff;
+    border: 2px solid #333333;
+    border-radius: 6px;
+}
+
+#results-table {
+    margin: 0 auto;
+    width: 80%;
+    background-color: #ffffff;
+}
+
+#results-table th {
+    background-color: #2f6cae;
+    color: #ffffff;
+    padding: 6px 10px;
+    border: 1px solid #255a91;
+}
+
+#results-table td {
+    padding: 5px 10px;
+    border: 1px solid #bbbbbb;
+}
+
+#results-table tbody tr:nth-child(even) {
+    background-color: #eef3f9;
+}
+
+.hit {
+    color: #1a7f1a;
+}
+
+.miss {
+    color: #cc0000;
+}
