@@ -6,14 +6,29 @@ const rSelect = document.getElementById("r-select");
 const errorMessage = document.getElementById("error-message");
 const resultsBody = document.getElementById("results-body");
 const xButtons = document.querySelectorAll(".x-button");
+const comment = document.getElementById("comment");
 const SCALE = 50;
 const CENTER_X = canvas.width / 2;
 const CENTER_Y = canvas.height / 2;
+const R_VALUES = [1, 1.5, 2, 2.5, 3];
 const saved = localStorage.getItem("results");
+const clearButton = document.getElementById("clear-button");
+const commentContent = localStorage.getItem("content")
+
+console.log(commentContent);
+
+function getR() {
+    let index = rSelect.selectedIndex;
+    if (index < 0 || index >= R_VALUES.length) {
+        return null;
+    }
+    return R_VALUES[index];
+}
 
 let selectedX = null;
 let results = [];
-
+let commentText = commentContent === null ? "" : commentContent;
+comment.textContent = commentText;
 
 if (saved !== null) {
     results = JSON.parse(saved);
@@ -53,7 +68,7 @@ function addRow(result) {
         "<td>" + result.r + "</td>" +
         "<td class=\"" + hitClass + "\">" + hitText + "</td>" +
         "<td>" + timeText + "</td>";
-    resultsBody.appendChild(row);
+    resultsBody.insertBefore(row, resultsBody.firstChild);
 }
 
 function renderTable() {
@@ -98,7 +113,6 @@ function drawScene(r, point) {
     ctx.stroke();
 
     let ks = [-1, -0.5, 0.5, 1];
-    let names = ["-R", "-R/2", "R/2", "R"];
 
     ctx.beginPath();
     for (let i = 0; i < ks.length; i++) {
@@ -113,11 +127,11 @@ function drawScene(r, point) {
     ctx.font = "12px serif";
     ctx.textAlign = "center";
     for (let i = 0; i < ks.length; i++) {
-        ctx.fillText(names[i], CENTER_X + ks[i] * R, CENTER_Y + 18);
+        ctx.fillText(String(ks[i] * r), CENTER_X + ks[i] * R, CENTER_Y + 18);
     }
     ctx.textAlign = "left";
     for (let i = 0; i < ks.length; i++) {
-        ctx.fillText(names[i], CENTER_X + 8, CENTER_Y - ks[i] * R + 4);
+        ctx.fillText(String(ks[i] * r), CENTER_X + 8, CENTER_Y - ks[i] * R + 4);
     }
     ctx.fillText("x", canvas.width - 14, CENTER_Y - 8);
     ctx.fillText("y", CENTER_X + 8, 12);
@@ -142,7 +156,7 @@ for (let i = 0; i < xButtons.length; i++) {
 }
 
 rSelect.addEventListener("change", function () {
-    drawScene(Number(rSelect.value), null);
+    drawScene(getR(), null);
 });
 
 form.addEventListener("submit", function (e) {
@@ -160,8 +174,8 @@ form.addEventListener("submit", function (e) {
         return;
     }
 
-    let r = Number(rSelect.value);
-    if (isNaN(r) || r <= 0) {
+    let r = getR();
+    if (r === null || r <= 0) {
         showError("Некорректное значение R");
         return;
     }
@@ -182,11 +196,23 @@ form.addEventListener("submit", function (e) {
     drawScene(r, result);
 });
 
+clearButton.addEventListener("click", function () {
+    results = [];
+    localStorage.removeItem("results");
+    resultsBody.innerHTML = "";
+    drawScene(getR(), null);
+});
+
 renderTable();
-if (results.length > 0) {
+if (results != null && results.length > 0) {
     let last = results[results.length - 1];
     rSelect.value = String(last.r);
     drawScene(last.r, last);
 } else {
-    drawScene(Number(rSelect.value), null);
+    drawScene(getR(), null);
 }
+
+comment.addEventListener("input", (e) => {
+    const text = e.target.innerText;
+    localStorage.setItem("content", text);
+});
