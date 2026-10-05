@@ -6,16 +6,12 @@ const rSelect = document.getElementById("r-select");
 const errorMessage = document.getElementById("error-message");
 const resultsBody = document.getElementById("results-body");
 const xButtons = document.querySelectorAll(".x-button");
-const comment = document.getElementById("comment");
 const SCALE = 50;
 const CENTER_X = canvas.width / 2;
 const CENTER_Y = canvas.height / 2;
 const R_VALUES = [1, 1.5, 2, 2.5, 3];
 const saved = localStorage.getItem("results");
 const clearButton = document.getElementById("clear-button");
-const commentContent = localStorage.getItem("content")
-
-console.log(commentContent);
 
 function getR() {
     let index = rSelect.selectedIndex;
@@ -27,8 +23,6 @@ function getR() {
 
 let selectedX = null;
 let results = [];
-let commentText = commentContent === null ? "" : commentContent;
-comment.textContent = commentText;
 
 if (saved !== null) {
     results = JSON.parse(saved);
@@ -211,8 +205,3 @@ if (results != null && results.length > 0) {
 } else {
     drawScene(getR(), null);
 }
-
-comment.addEventListener("input", (e) => {
-    const text = e.target.innerText;
-    localStorage.setItem("content", text);
-});

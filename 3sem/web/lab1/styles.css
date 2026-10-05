@@ -149,9 +149,14 @@ input[type="text"]:focus {
     justify-content: center;
 }
 
-#comment{
+#comments {
     width: 80%;
-    border: 1px #312fae solid;
-    border-radius: 6px;
+}
+
+#comments h2 {
+    font-family: "Times New Roman", Times, serif;
+    color: #8b0000;
+    font-size: 24px;
+    margin: 4px;
 }
 
