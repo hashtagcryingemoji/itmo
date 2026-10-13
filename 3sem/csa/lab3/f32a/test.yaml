@@ -1,0 +1,17 @@
+limit: 518
+memory_size: 264
+memory_mapped_io:
+  0x80: [0xABCD1234]
+  0x84: []
+reports:
+  - name: output
+    slice: last
+    view: |
+      dec output: {io:0x84:dec}
+      hex output: {io:0x84:hex}
+  - name: stacks
+    slice: last
+    view: |
+      f32a:data-stack-max:   {f32a:data-stack-max}
+      f32a:return-stack-max: {f32a:return-stack-max}
+
